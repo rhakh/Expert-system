@@ -19,7 +19,6 @@ else
 			-Wno-unused -Wno-unused-parameter -O2
 endif
 
-
 OBJDIR = obj/
 
 SRCDIR = src/
