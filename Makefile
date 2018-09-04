@@ -5,14 +5,14 @@ ifeq ($(OS),Darwin)
   CXX=clang++
   INCLUDE_AND_LIBS = -I $(HOME)/.brew/Cellar/boost/1.67.0_1/include \
 					-L $(HOME)/.brew/Cellar/boost/1.67.0_1/lib \
-					-I Simple-Web-Server
+					-I include
   FLAGS = -std=c++11 -Wall -Wextra -Werror \
 			-lboost_filesystem  -lboost_system  -lboost_program_options \
 			-pthread -lboost_thread-mt -Wno-unused-command-line-argument \
 			-Wno-unused -Wno-unused-parameter -O2
 else
   CXX=g++
-  INCLUDE_AND_LIBS = -I Simple-Web-Server
+  INCLUDE_AND_LIBS = -I include 
   FLAGS = -std=c++11 -Wall -Wextra -Werror \
 			-lboost_filesystem  -lboost_system -lboost_program_options \
 			-pthread -lboost_thread -Wno-unused-command-line-argument \
@@ -49,3 +49,13 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+test: compile_test
+	$(CXX) $(FLAGS) -o mtest test/main.o
+
+test_clean:
+	rm -rf test/main.o
+	rm -rf mtest
+
+compile_test:
+	$(CXX) $(FLAGS) -o test/main.o -c test/main.cpp

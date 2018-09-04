@@ -1,7 +1,7 @@
 #ifndef FACT_HPP
 #define FACT_HPP
 
-typedef enum FactStates_e {ES_FALSE, ES_TRUE, ES_UNDEFINED, ES_UNSOLVED};
+enum FactStates_e {ES_FALSE, ES_TRUE, ES_UNDEFINED, ES_UNSOLVED};
 
 class Fact {
     char    letter = 0;

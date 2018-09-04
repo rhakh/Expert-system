@@ -3,17 +3,18 @@
 
 #include <string>
 
+#include "boost/spirit/include/qi.hpp"
+#include "boost/spirit/include/qi_parse.hpp"
+#include "boost/spirit/include/qi_grammar.hpp"
+#include "boost/spirit/include/qi_operator.hpp"
+
 enum verboseLevel_e { NONE, SERVER, ALGO };
 
 #define NP_VBL_NONE		0x0
-#define NP_VBL_SERVER	0x1
-#define NP_VBL_PATH		0x2
-#define NP_VBL_RESULT	0x4
-#define NP_VBL_ALL		0x7
+
 
 extern std::string	fileName;
 extern int	verboseLevel;
-extern int	optimisationByTime;
 
 #endif // MAIN_HPP
 
