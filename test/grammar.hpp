@@ -1,5 +1,5 @@
-#ifndef GRAMMAR_TEST
-#define GRAMMAR_TEST
+#ifndef __CALCULATOR_GRAMMAR_SIMPLE_HPP__
+#define __CALCULATOR_GRAMMAR_SIMPLE_HPP__
 
 #ifdef _MSC_VER
 #pragma once
@@ -11,21 +11,20 @@ namespace qi = boost::spirit::qi;
 
 template <typename Iterator>
 struct calculator_simple : qi::grammar<Iterator>
+{
+        calculator_simple() : calculator_simple::base_type(expression)
         {
-        calculator_simple()
-                : calculator_simple::base_type(expression)
-                {
-                expression = term   >> *( '+' >> term   | '|' >> term );
+        expression = term   >> *( '+' >> term   | '-' >> term );
 
-                term       = factor >> *( '*' >> factor | '/' >> factor );
+        term       = factor >> *( '*' >> factor | '/' >> factor );
 
-                factor     = qi::uint_
-                           |  '(' >> expression >> ')'
-                           | '+' >> factor
-                           | '|' >> factor;
-                }
+        factor     = qi::char_("A", "Z")
+                        |  '(' >> expression >> ')'
+                        | '+' >> factor
+                        | '-' >> factor;
+        }
 
         qi::rule<Iterator> expression, term, factor;
-        };
+};
 
-#endif // GRAMMAR_TEST
+#endif

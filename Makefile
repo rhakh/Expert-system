@@ -59,3 +59,14 @@ test_clean:
 
 compile_test:
 	$(CXX) $(FLAGS) -o test/main.o -c test/main.cpp
+
+
+grammar: compile_grammar
+	$(CXX) $(FLAGS) -o grammar test/grammar.o
+
+grammar_clean:
+	rm -rf test/grammar.o
+	rm -rf grammar
+
+compile_grammar:
+	$(CXX) $(FLAGS) -o test/grammar.o -c test/grammar.cpp

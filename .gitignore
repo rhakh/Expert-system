@@ -1,7 +1,7 @@
 obj
 obj/*
 test/*.o
-npuzzle
+expert-system
 .qmake.stash
 cmake-build-debug/
 .idea/
