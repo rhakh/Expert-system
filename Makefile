@@ -62,11 +62,11 @@ compile_test:
 
 
 grammar: compile_grammar
-	$(CXX) $(FLAGS) -o grammar test/grammar.o
+	$(CXX) $(FLAGS) $(INCLUDE_AND_LIBS) -o grammar test/grammar.o
 
 grammar_clean:
 	rm -rf test/grammar.o
 	rm -rf grammar
 
 compile_grammar:
-	$(CXX) $(FLAGS) -o test/grammar.o -c test/grammar.cpp
+	$(CXX) $(FLAGS) $(INCLUDE_AND_LIBS) -o test/grammar.o -c test/grammar.cpp

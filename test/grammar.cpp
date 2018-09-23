@@ -24,7 +24,11 @@ int main()
             break;
         str_t_it begin = expression.begin(), end = expression.end();
 
-        bool success = qi::parse(begin, end, calc);
+        bool success = qi::parse(begin, end, calc, qi::space);
+
+
+        // bool success = qi::phrase_parse(begin, end, calc, qi::space);
+
 
         std::cout << "---------------------\n";
         if(success && begin == end)
